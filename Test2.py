@@ -12,3 +12,4 @@ print(subprocess.STDOUT)
 
 #useless_cat_call = subprocess.run(["redis-cli --stat"], stdout=subprocess.PIPE, text=True, input="Hello from the other side")
 #print(useless_cat_call.stdout)  # Hello
+
