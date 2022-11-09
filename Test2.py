@@ -1,15 +1,23 @@
-import os
+import subprocess
+import sys
 
-home_dir = os.system("pwd")
+#home_dir = os.system("pwd")
 
 #print(home_dir)
 
 
-import subprocess
+result = subprocess.Popen(["redis-cli", "INFO","MEMORY"], text=True,stdout=subprocess.PIPE)
 
-list_files = subprocess.run(["redis-cli", "INFO" , "SERVER"])
-print(subprocess.STDOUT)
+#print("stdout:", result.stdout)
 
-#useless_cat_call = subprocess.run(["redis-cli --stat"], stdout=subprocess.PIPE, text=True, input="Hello from the other side")
-#print(useless_cat_call.stdout)  # Hello
+i=0
+for linea in result.stdout :   
+    if i>0 :
+        Parametros,Values = linea.rstrip().split(":")
+        print (str(i)+") Paramtros " + Parametros + " : " + Values )
+        i+=1
+    else : 
+        i+=1
+
+
 
